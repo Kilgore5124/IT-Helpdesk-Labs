@@ -1,0 +1,36 @@
+# Active Directory Home Lab (Help Desk Focus)
+
+## Objective
+Build and operate a small Active Directory environment to practice real world Tier 1 / Tier 2 help desk tasks, including user account management, DNS troubleshooting, and domain-joined workstation support.
+
+---
+
+## Environment
+- Hypervisor: Oracle VirtualBox
+- Server:
+  - Windows Server 2022 (Desktop Experience)
+  - Hostname: DC1
+- Client:
+  - Windows 11 Pro
+  - Hostname: PC1
+- Network:
+  - VirtualBox Host-Only Adapter
+  - Static IP addressing
+- Domain:
+  - corp.local
+
+---
+
+## Lab Architecture
+- DC01
+  - Active Directory Domain Services
+  - DNS Server
+  - Static IP: 192.168.100.10
+- PC01
+  - Domain-joined Windows 11 workstation
+  - Static IP: 192.168.100.20
+  - DNS points to DC01
+
+---
+
+## Active Directory Structure
