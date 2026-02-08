@@ -34,3 +34,73 @@ Build and operate a small Active Directory environment to practice real world Ti
 ---
 
 ## Active Directory Structure
+
+corp.local
+-Company
+----Users
+------Groups
+--------Workstations
+
+
+### Example Objects
+- Users:
+  - J.Smith
+- Groups:
+  - GG_Sales (Global Security Group)
+
+---
+
+## Key Tasks Performed
+
+### 1. Domain Controller Setup
+- Installed Active Directory Domain Services (AD DS)
+- Promoted server to Domain Controller
+- Configured DNS and verified forward lookup zones
+- Ensured DC used itself as DNS client
+
+### 2. Network & DNS Troubleshooting
+- Identified VM-to-VM connectivity failures due to NAT/Internal Network limitations
+- Reconfigured environment to use Host-Only networking
+- Corrected static IP and default gateway misconfigurations
+- Diagnosed DNS timeouts caused by missing DNS client configuration
+- Verified DNS resolution using `nslookup` and `ping`
+
+### 3. User and Group Management
+- Created Organizational Units (OUs) for logical separation
+- Created domain users and security groups
+- Assigned users to appropriate groups
+- Verified user properties and login names via ADUC
+
+### 4. Client Domain Join
+- Joined Windows 11 workstation to the domain
+- Authenticated using domain administrator credentials
+- Verified domain membership post-reboot
+
+### 5. User Authentication Validation
+- Successfully logged into domain-joined workstation as:
+CORP\J.Smith
+
+- Confirmed domain authentication and profile creation
+
+---
+
+## Common Issues Encountered & Resolved
+
+### Issue: Domain could not be found
+- Root cause: Client DNS not pointing to Domain Controller
+- Resolution: Corrected DNS settings and flushed resolver cache
+
+### Issue: DNS timeouts from client
+- Root cause: Missing DNS client configuration on DC01 and unstable VM network type
+- Resolution: Set DC01 to use itself as DNS server and switched to Host-Only networking
+
+---
+
+## Skills Demonstrated
+- Active Directory administration
+- DNS configuration and troubleshooting
+- Windows Server management
+- Windows 11 domain join support
+- VM networking fundamentals
+- Tier 1 / Tier 2 troubleshooting methodology
+- Clear, methodical problem isolation and resolution
