@@ -1,0 +1,127 @@
+# Group Policy Lab
+
+## Objective
+Implement and troubleshoot Group Policy in a Windows Server 2022 Active Directory environment to demonstrate centralized configuration management and real-world Tier 1 / Tier 2 troubleshooting.
+
+---
+
+## Environment
+
+- Domain: corp.local
+- Domain Controller: DC01
+- Client Workstation: PC01 (Windows 11 Pro)
+- Hypervisor: Oracle VirtualBox (Host-Only Networking)
+- Active Directory Structure:
+  - Company
+    - Users
+    - Groups
+    - Workstations
+
+---
+
+## Lab Scenario
+
+The goal was to enforce a desktop wallpaper policy on a domain-joined workstation using Group Policy and validate centralized control from the Domain Controller.
+
+---
+
+## GPO Implementation
+
+### 1. Created and Linked GPO
+
+Created a new GPO:
+Workstations-Desktop Policy
+
+
+Linked to:
+Company-Worstations OU
+
+---
+
+### 2. Configured User Policy
+
+Navigated to:
+
+User Configuration
+-Policies
+-Administrative Templates
+-Desktop
+-Desktop
+
+Enabled:
+Desktop Wallpaper
+
+Configured path:
+C:\Windows\Web\Wallpaper\Windows\img0.jpg
+Style: Fill
+
+---
+
+## Initial Issue Encountered
+
+### Problem:
+Wallpaper did not change after running:
+
+`gpresult /r` showed the GPO was not applied to the user.
+
+### Root Cause:
+The user account (`J.Smith`) was located in:
+Company-Users
+
+But the GPO was linked to:
+Company-Workstations
+
+Since the policy was configured under **User Configuration**, it follows the user’s OU — not the computer’s OU.
+
+---
+
+## Resolution
+
+Moved the user object:
+J.Smith
+
+To:
+Company-Workstations
+
+
+Forced policy update again:
+gpupdate /force
+
+Upon re-login, the desktop wallpaper updated successfully.
+
+---
+
+## Skills Demonstrated
+
+- Group Policy creation and linking
+- OU-based policy scoping
+- Understanding User vs Computer Configuration
+- Diagnosing non-applied GPOs using:
+  - `gpresult /r`
+  - OU placement verification
+- Forcing policy updates with `gpupdate`
+- Validating centralized policy enforcement
+
+---
+
+## Key Learning Points
+
+- GPO scope depends entirely on object location in Active Directory.
+- User policies apply to users based on their OU.
+- Computer policies apply to machines based on their OU.
+- Always verify GPO application with `gpresult` before changing configuration.
+- Troubleshooting methodology is more important than initial configuration.
+
+---
+
+## Status
+
+✔ GPO created  
+✔ Linked correctly  
+✔ Troubleshooting completed  
+✔ Policy successfully enforced  
+
+
+
+
+
