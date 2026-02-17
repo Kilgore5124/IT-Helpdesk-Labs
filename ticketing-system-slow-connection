@@ -1,0 +1,93 @@
+# Performance Troubleshooting Lab (PC Running Slow)
+
+## Objective
+Simulate and resolve a real-world Tier 1 help desk performance complaint using structured troubleshooting and system resource analysis.
+
+Lab Environment:
+- Domain: corp.local
+- Workstation: PC01 (Windows 11 Pro)
+- Hypervisor: Oracle VirtualBox
+- Host Machine: 16GB RAM
+
+---
+
+## Ticket Scenario
+
+User reports that PC1 is extremely slow.
+Applications take several seconds to open and system responsiveness is degraded.
+
+---
+
+## Triage Process
+
+1. Verified symptoms locally on PC1.
+2. Opened Task Manager to analyze system performance.
+3. Reviewed:
+   - CPU utilization
+   - Memory utilization
+   - Disk activity
+4. Observed memory usage consistently above 85%.
+
+---
+
+## Root Cause
+
+PC01 virtual machine was allocated insufficient RAM (2GB), causing memory pressure and paging under normal workload conditions.
+
+Windows 11 requires more than 2GB for stable performance in multi-application use.
+
+---
+
+## Resolution Steps
+
+1. Powered off PC1 virtual machine.
+2. Opened VirtualBox settings.
+3. Increased RAM allocation from 2GB to 4GB.
+4. Restarted PC01.
+5. Re-tested application responsiveness and system performance.
+
+---
+
+## Validation
+
+- Memory utilization dropped to normal operating levels.
+- Applications opened without noticeable delay.
+- System responsiveness restored.
+- User confirmed issue resolved.
+
+---
+
+## Tools Used
+
+- Task Manager (Performance tab)
+- VirtualBox VM Settings
+- Resource utilization analysis
+
+---
+
+## Skills Demonstrated
+
+- Performance bottleneck identification
+- Resource monitoring using Task Manager
+- Understanding of memory pressure and paging
+- Virtual machine resource allocation management
+- Structured troubleshooting methodology
+- Validation before ticket closure
+
+---
+
+## Key Help Desk Concepts Reinforced
+
+- Always measure before making changes.
+- Identify the bottleneck (CPU, Memory, Disk) before acting.
+- Resource constraints can mimic hardware failure.
+- Validate improvements after configuration changes.
+
+---
+
+## Status
+
+✔ Issue replicated  
+✔ Root cause identified  
+✔ Resolution implemented  
+✔ Performance validated  
