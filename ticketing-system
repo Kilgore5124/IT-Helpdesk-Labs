@@ -1,0 +1,69 @@
+# Help Desk Ticketing Lab (Spiceworks Simulation)
+
+## Objective
+Simulate real-world Tier 1 help desk ticket workflows, including issue triage, troubleshooting, resolution, and professional documentation.
+
+Platform Used:
+Spiceworks Cloud Help Desk
+
+Domain Environment:
+corp.local
+DC1 (Domain Controller)
+PC1 (Client Workstation)
+
+---
+
+## Ticket #1 – User Locked Out of Domain Account
+
+### Issue Summary
+User reported being unable to log into domain-joined workstation (PC1).
+Error message indicated account was locked after multiple failed login attempts.
+
+### Triage Process
+1. Confirmed issue description and symptoms.
+2. Attempted login to replicate behavior.
+3. Verified lockout condition in Active Directory Users and Computers (ADUC).
+
+### Root Cause
+Account lockout triggered due to multiple incorrect password attempts.
+
+### Resolution Steps
+1. Accessed ADUC on DC1.
+2. Navigated to user object (J.Smith).
+3. Confirmed account lock status.
+4. Unlocked account via Account tab.
+5. Instructed user to retry login.
+6. Verified successful authentication to PC1.
+
+### Validation
+User successfully logged into domain workstation after unlock.
+
+---
+
+## Skills Demonstrated
+
+- Ticket creation and categorization
+- User authentication troubleshooting
+- Active Directory account management
+- Replicating and verifying reported issues
+- Structured documentation of resolution steps
+- Closing the issue after validation
+
+---
+
+## Key Help Desk Concepts Reinforced
+
+- Always verify the issue before making changes
+- Replicate the problem when possible
+- Document actions taken clearly and professionally
+- Confirm resolution with the end user
+- Maintain structured ticket workflow
+
+---
+
+## Status
+✔ Ticket simulated
+✔ Issue replicated
+✔ Root cause identified
+✔ Resolution validated
+✔ Documentation completed
