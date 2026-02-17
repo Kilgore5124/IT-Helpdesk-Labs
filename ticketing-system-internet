@@ -1,0 +1,108 @@
+# Help Desk Ticketing Lab (Spiceworks Simulation)
+
+## Objective
+Simulate real-world Tier 1 help desk workflows including ticket creation, structured troubleshooting, root cause identification, resolution, and professional documentation.
+
+Platform Used:
+Spiceworks Cloud Help Desk
+
+Domain Environment:
+- Domain: corp.local
+- Domain Controller: DC1 (Windows Server 2022)
+- Client Workstation: PC1 (Windows 11 Pro)
+- VirtualBox Dual-Network Setup:
+  - Host-Only Adapter (AD network)
+  - NAT Adapter (Internet access)
+
+---
+
+# Ticket #1 – User Locked Out of Domain Account
+
+## Issue Summary
+User unable to log into domain-joined workstation (PC1).  
+System message indicated account lockout.
+
+## Triage Process
+1. Replicated issue at login screen.
+2. Verified lockout status in Active Directory Users and Computers (ADUC).
+3. Confirmed multiple failed login attempts triggered lockout.
+
+## Root Cause
+Account lockout caused by repeated incorrect password attempts.
+
+## Resolution
+1. Accessed ADUC on DC1.
+2. Navigated to user object (J.Smith).
+3. Unlocked account under Account tab.
+4. Verified successful login to PC1.
+
+## Validation
+User authenticated successfully after unlock.
+
+---
+
+# Ticket #2 – No Internet Connectivity
+
+## Issue Summary
+User reported inability to access external websites.  
+Domain login functioning normally.
+
+## Initial Symptoms
+- `ping google.com` failed.
+- `ping 192.168.100.10` (Domain Controller) succeeded.
+
+## Triage Process
+1. Verified internal domain connectivity.
+2. Checked IP configuration using: 
+- ipconfig
+
+3. Observed missing 10.0.2.x NAT address.
+
+## Root Cause
+Internet-facing network adapter (NAT) was disabled.
+
+## Resolution
+1. Opened Network Connections.
+2. Identified disabled NAT adapter.
+3. Re-enabled adapter.
+4. Verified internet access using:
+-ping google.com
+
+## Validation
+External connectivity restored successfully.
+
+---
+
+# Skills Demonstrated
+
+- Ticket categorization and prioritization
+- Structured troubleshooting methodology
+- Layered network diagnostics
+- Active Directory account management
+- Domain authentication verification
+- Use of:
+- `ping`
+- `ipconfig`
+- `gpupdate`
+- `gpresult`
+- Clear, professional documentation of root cause and resolution
+
+---
+
+# Key Help Desk Principles Reinforced
+
+- Always verify before making changes
+- Isolate internal vs external connectivity issues
+- Confirm resolution before closing tickets
+- Document actions clearly and concisely
+- Troubleshoot methodically, not reactively
+
+---
+
+# Status
+
+✔ Ticket #1 resolved  
+✔ Ticket #2 resolved  
+✔ Documentation completed  
+✔ Lab validated
+
