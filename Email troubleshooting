@@ -1,0 +1,55 @@
+# Email Troubleshooting Lab – Outlook Not Syncing
+
+## Objective
+Simulate and resolve a common help desk ticket involving Outlook failing to sync emails.
+
+Lab Environment:
+- Domain: corp.local
+- Workstation: PC1
+- User: J.Smith
+
+---
+
+## Issue Summary
+User reported Outlook was disconnected and not receiving new emails.
+
+---
+
+## Triage Process
+
+1. Verified internet connectivity using ping tests.
+2. Confirmed issue isolated to Outlook application.
+3. Checked for "Work Offline" mode.
+4. Cleared cached credentials via Credential Manager.
+5. Tested mailbox access via webmail.
+6. Recreated Outlook profile via Mail settings.
+
+---
+
+## Root Cause
+Corrupted Outlook profile and/or outdated cached credentials prevented successful mailbox synchronization.
+
+---
+
+## Resolution
+- Removed stored credentials.
+- Recreated Outlook profile.
+- Reauthenticated account.
+- Verified email synchronization restored.
+
+---
+
+## Skills Demonstrated
+- Application-layer troubleshooting
+- Credential management
+- Profile recreation procedures
+- Structured issue isolation
+- Validation before ticket closure
+
+---
+
+## Status
+✔ Issue replicated
+✔ Root cause identified
+✔ Resolution implemented
+✔ Sync restored
