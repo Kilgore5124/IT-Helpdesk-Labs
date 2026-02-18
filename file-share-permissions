@@ -1,0 +1,158 @@
+# File Share & NTFS Permissions Lab
+
+## Objective
+Demonstrate structured file share creation, security group-based access control, NTFS vs Share permission understanding, and access denied troubleshooting in an Active Directory environment.
+
+Lab Environment:
+- Domain: corp.local
+- Domain Controller: DC1 (Windows Server 2022)
+- Client Workstation: PC1 (Windows 11 Pro)
+- User: J.Smith
+
+---
+
+# Architecture Overview
+
+Security Model Used:
+
+Users → Security Groups → Folder Permissions
+
+Direct user-to-folder permissions were intentionally avoided to follow best practices.
+
+Security Group Created:
+GG_Sales_RW (Global Security Group)
+
+Shared Folder:
+\\DC1\Sales
+
+Local Path:
+C:\Shares\Sales
+
+---
+
+# Phase 1 – Security Group Configuration
+
+1. Created global security group:
+   GG_Sales_RW
+2. Added user:
+   J.Smith
+3. Verified group membership under user properties.
+
+---
+
+# Phase 2 – Share Configuration
+
+Configured Advanced Sharing on:
+
+C:\Shares\Sales
+
+Share Name:
+Sales
+
+Share Permissions:
+- Domain Admins → Full Control
+- GG_Sales_RW → Change
+- Removed Everyone
+
+---
+
+# Phase 3 – NTFS Permissions
+
+Configured Security tab on:
+
+C:\Shares\Sales
+
+NTFS Permissions:
+- Domain Admins → Full Control
+- GG_Sales_RW → Modify
+- SYSTEM retained
+
+Verified inheritance and effective permission structure.
+
+---
+
+# Validation (Initial Access Test)
+
+On PC1:
+
+Accessed:
+\\DC01\Sales
+
+User successfully:
+- Opened folder
+- Created test file
+- Deleted test file
+
+Confirmed correct access behavior.
+
+---
+
+# Failure Simulation – Access Denied Scenario
+
+To simulate real-world troubleshooting:
+
+1. Removed J.Smith from GG_Sales_RW.
+2. Logged out/in to refresh security token.
+3. Attempted access to:
+   \\DC1\Sales
+
+Result:
+Access Denied.
+
+---
+
+# Troubleshooting Process
+
+1. Verified network connectivity:
+   ping DC01
+
+2. Confirmed UNC path correct.
+
+3. Checked user group membership in ADUC.
+   Observed missing membership in GG_Sales_RW.
+
+Root Cause:
+User not assigned to required security group for share access.
+
+---
+
+# Resolution
+
+1. Re-added J.Smith to GG_Sales_RW.
+2. Logged user out and back in.
+3. Retested share access.
+
+Access restored successfully.
+
+---
+
+# Key Concepts Demonstrated
+
+- Proper group-based permission modeling
+- Difference between Share and NTFS permissions
+- Most restrictive permission rule
+- Security token refresh behavior
+- Access denied troubleshooting methodology
+- Structured validation before ticket closure
+
+---
+
+# Skills Demonstrated
+
+- Active Directory group management
+- File share configuration
+- NTFS permission configuration
+- UNC path testing
+- Permission-based troubleshooting
+- Least privilege implementation
+
+---
+
+# Status
+
+✔ Share created
+✔ Security group implemented
+✔ Access validated
+✔ Failure simulated
+✔ Issue diagnosed
+✔ Access restored
